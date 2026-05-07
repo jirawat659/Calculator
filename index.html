@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Premium Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="calculator">
+        <div class="header">
+            <i class="fa-solid fa-list-ul text-orange" id="list-icon-btn" style="cursor: pointer;"></i>
+        </div>
+        <div class="display" id="display">0</div>
+        <div class="buttons">
+            <button class="btn btn-top">AC</button>
+            <button class="btn btn-top">+/-</button>
+            <button class="btn btn-top">%</button>
+            <button class="btn btn-op">&divide;</button>
+
+            <button class="btn btn-num">7</button>
+            <button class="btn btn-num">8</button>
+            <button class="btn btn-num">9</button>
+            <button class="btn btn-op">&times;</button>
+
+            <button class="btn btn-num">4</button>
+            <button class="btn btn-num">5</button>
+            <button class="btn btn-num">6</button>
+            <button class="btn btn-op">&minus;</button>
+
+            <button class="btn btn-num">1</button>
+            <button class="btn btn-num">2</button>
+            <button class="btn btn-num">3</button>
+            <button class="btn btn-op">+</button>
+
+            <button class="btn btn-num" id="calc-icon-btn"><i class="fa-solid fa-calculator"></i></button>
+            <button class="btn btn-num">0</button>
+            <button class="btn btn-num">.</button>
+            <button class="btn btn-op" id="equals-btn">=</button>
+        </div>
+    </div>
+
+    <div class="modal" id="subscription-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <div class="modal-icon">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <h2>สมัครสมาชิกเพื่อดูผลลัพธ์</h2>
+            <p>ปลดล็อกการคำนวณแบบไม่จำกัดและฟีเจอร์พรีเมียม!</p>
+
+            <div class="pricing-options">
+                <div class="option promo-option">
+                    <div class="promo-badge"><i class="fa-solid fa-fire"></i> โปรโมชั่นพิเศษ</div>
+                    <div class="option-info">
+                        <h3>รายวัน</h3>
+                        <p class="price"><span class="old-price">19 ฿</span> 9 ฿</p>
+                    </div>
+                    <button class="subscribe-btn">เลือกแผนนี้</button>
+                </div>
+
+                <div class="option highlight">
+                    <div class="badge">ยอดนิยม</div>
+                    <div class="option-info">
+                        <h3>รายเดือน</h3>
+                        <p class="price">59 ฿</p>
+                    </div>
+                    <button class="subscribe-btn">เลือกแผนนี้</button>
+                </div>
+
+                <div class="option">
+                    <div class="option-info">
+                        <h3>รายปี</h3>
+                        <p class="price">99 ฿</p>
+                    </div>
+                    <button class="subscribe-btn">เลือกแผนนี้</button>
+                </div>
+            </div>
+            <div id="qr-section" style="display: none;">
+                <div class="qr-header">
+                    <div class="icon-pulse"><i class="fa-solid fa-qrcode"></i></div>
+                    <h3>สแกนเพื่อปลดล็อก</h3>
+                </div>
+                <div class="qr-container">
+                    <div class="qr-frame">
+                        <img src="QR.jpg" alt="QR Code" class="qr-image">
+                        <div class="scanline"></div>
+                    </div>
+                </div>
+                <div class="qr-details">
+                    <div class="selected-plan-box">
+                        <span id="selected-plan-text">กำลังโหลด...</span>
+                    </div>
+                    <p class="unlock-text"><i class="fa-solid fa-bolt text-orange"></i> ระบบจะทำงานอัตโนมัติทันที</p>
+                </div>
+                <button id="back-to-plans-btn" class="back-btn"><i class="fa-solid fa-chevron-left"></i>
+                    กลับไปเลือกแผนใหม่</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Troll Modal -->
+    <div class="modal" id="troll-modal">
+        <div class="modal-content" style="border: 3px solid #FF9F0A; background-color: #222;">
+            <span class="close-btn" id="close-troll-modal">&times;</span>
+            <div class="modal-icon" style="font-size: 60px; margin-bottom: 10px;" id="troll-emoji">
+                🤪
+            </div>
+            <h2 id="troll-title" style="color: #FF9F0A; font-size: 26px;">แฮ่!</h2>
+            <p id="troll-text" style="color: white; font-size: 16px; margin-top: 15px; margin-bottom: 25px; line-height: 1.5;"></p>
+            <button class="subscribe-btn" id="troll-subscribe-btn" style="width: 100%; font-size: 16px; padding: 12px;">ไปสมัครสมาชิกเลยดีกว่า 💸</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
