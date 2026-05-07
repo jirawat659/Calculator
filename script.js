@@ -55,7 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     let currentInput = '0';
-
+    let shouldResetDisplay = false;
+    let activeOpBtn = null;
 
     // Format number with commas
     const formatNumber = (numStr) => {
@@ -78,6 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (btn.querySelector('i')) return;
 
                 const val = btn.textContent.trim();
+
+                if (shouldResetDisplay) {
+                    currentInput = '0';
+                    shouldResetDisplay = false;
+                    if (activeOpBtn) {
+                        activeOpBtn.style.backgroundColor = '';
+                        activeOpBtn.style.color = '';
+                        activeOpBtn = null;
+                    }
+                }
 
                 // Prevent multiple decimals
                 if (val === '.' && currentInput.includes('.')) return;
@@ -107,6 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentInput = '0';
                     display.textContent = currentInput;
                     display.style.fontSize = '80px';
+                    shouldResetDisplay = false;
+                    if (activeOpBtn) {
+                        activeOpBtn.style.backgroundColor = '';
+                        activeOpBtn.style.color = '';
+                        activeOpBtn = null;
+                    }
                 } else if (action === '+/-') {
                     if (currentInput !== '0') {
                         if (currentInput.startsWith('-')) {
@@ -126,13 +143,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     display.textContent = formatNumber(currentInput);
                 }
             } else if (isOp) {
-                // Animate the operator button briefly
+                if (activeOpBtn) {
+                    activeOpBtn.style.backgroundColor = '';
+                    activeOpBtn.style.color = '';
+                }
                 btn.style.backgroundColor = '#fff';
                 btn.style.color = '#FF9F0A';
-                setTimeout(() => {
-                    btn.style.backgroundColor = '';
-                    btn.style.color = '';
-                }, 200);
+                activeOpBtn = btn;
+                shouldResetDisplay = true;
             }
         });
     });
